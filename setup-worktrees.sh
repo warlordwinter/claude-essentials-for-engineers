@@ -18,10 +18,14 @@ PARENT=$(dirname "$REPO_ROOT")
 echo "→ Creating branch: fix/paginate-bug"
 git branch fix/paginate-bug main 2>/dev/null || echo "  (branch already exists, skipping)"
 git worktree add "$PARENT/leland-demo-fix" fix/paginate-bug
+mkdir -p "$PARENT/leland-demo-fix/.claude"
+cp "$REPO_ROOT/.claude/settings.json" "$PARENT/leland-demo-fix/.claude/settings.json"
 
 echo "→ Creating branch: feat/expand-tests"
 git branch feat/expand-tests main 2>/dev/null || echo "  (branch already exists, skipping)"
 git worktree add "$PARENT/leland-demo-tests" feat/expand-tests
+mkdir -p "$PARENT/leland-demo-tests/.claude"
+cp "$REPO_ROOT/.claude/settings.json" "$PARENT/leland-demo-tests/.claude/settings.json"
 
 echo ""
 echo "✓ Worktrees ready:"
